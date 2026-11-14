@@ -44,6 +44,7 @@ MUST_MATCH = [
     "api.anthropic.com",
     "console.anthropic.com",
     "mail.anthropic.com",
+    "assets-proxy.anthropic.com",
 ]
 
 # Must not steal unrelated or third-party traffic.
@@ -105,7 +106,7 @@ def validate_rules() -> list[str]:
         if APEX_RE.match(item) is None:
             errors.append(f"{item!r} is not a quoted-style '+.<domain>' apex wildcard")
 
-    expected = {"+.claude.ai", "+.claude.com", "+.anthropic.com"}
+    expected = {"+.claude.ai", "+.claude.com", "+.anthropic.com", "+.assets-proxy.anthropic.com"}
     if set(payload) != expected:
         errors.append(f"payload {payload!r} does not equal expected {sorted(expected)}")
 

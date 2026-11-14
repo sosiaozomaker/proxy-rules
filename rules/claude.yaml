@@ -14,6 +14,7 @@
 # - platform.claude.com：Claude Console、OAuth 与文档（Claude Platform / Claude Code 文档）
 # - api.anthropic.com：Claude API（Claude Platform 文档；status.claude.com 组件名）
 # - support.claude.com、code.claude.com、status.claude.com、claude.com（定价与站点）
+# - assets-proxy.anthropic.com：显式收录该主机（亦已被 +.anthropic.com 覆盖）
 #
 # 本列表不是永久完整保证。官方若启用新的一级域名，需要再增补。
 # 故意不包含 Google、Cloudflare 等第三方全站流量，也不收录未经官方流程确认的追踪域名。
@@ -22,3 +23,4 @@ payload:
   - '+.claude.ai'
   - '+.claude.com'
   - '+.anthropic.com'
+  - '+.assets-proxy.anthropic.com'
