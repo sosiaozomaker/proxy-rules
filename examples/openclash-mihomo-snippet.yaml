@@ -1,0 +1,28 @@
+# OpenClash / Mihomo 接入示例（语法演示）
+# 不含真实节点、服务器地址、端口、UUID、密钥或其他私有信息。
+# 节点与策略组请在每台路由器本地管理；公共仓库只提供域名规则。
+
+rule-providers:
+  claude:
+    type: http
+    behavior: domain
+    format: yaml
+    interval: 86400
+    path: ./rule_provider/claude.yaml
+    url: https://raw.githubusercontent.com/sosiaozomaker/proxy-rules/main/rules/claude.yaml
+
+# 以下为占位，必须在本地改成你自己的 Mihomo 兼容节点与策略组。
+proxies: []
+
+proxy-groups:
+  - name: Claude-LisaHost
+    type: select
+    proxies:
+      - 请在本地填入你的节点名称
+
+rules:
+  # 若需直连代理服务器本身以防回环，请在各路由器本地添加 IP-CIDR / DOMAIN 等规则。
+  # 不要把具体服务器公网 IP 写进公共仓库。这类 DIRECT 规则应放在本 RULE-SET 之前。
+  - RULE-SET,claude,Claude-LisaHost
+  # 把上一行放在 GEOIP、MATCH 或其他宽泛规则之前，否则可能被提前匹配而无法生效。
+  - MATCH,DIRECT

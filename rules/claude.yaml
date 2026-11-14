@@ -1,0 +1,24 @@
+# Claude / Anthropic 官方域名规则
+# 供 Mihomo / OpenClash 以 rule-providers 订阅：
+#   type: http
+#   behavior: domain
+#   format: yaml
+#
+# 本文件使用 behavior: domain 的 clash 通配写法，不是 classical。
+# 请勿写成 DOMAIN-SUFFIX,example.com。
+# '+.example.com' 等价于 classical 中的 DOMAIN-SUFFIX,example.com，
+# 会匹配 example.com 本身及其所有子域（参见 Mihomo Syntax / Domain Wildcards）。
+#
+# 收录依据（官方公开文档与状态页中出现的主机，并由下列后缀覆盖）：
+# - claude.ai：网页登录与对话（Claude 帮助中心）
+# - platform.claude.com：Claude Console、OAuth 与文档（Claude Platform / Claude Code 文档）
+# - api.anthropic.com：Claude API（Claude Platform 文档；status.claude.com 组件名）
+# - support.claude.com、code.claude.com、status.claude.com、claude.com（定价与站点）
+#
+# 本列表不是永久完整保证。官方若启用新的一级域名，需要再增补。
+# 故意不包含 Google、Cloudflare 等第三方全站流量，也不收录未经官方流程确认的追踪域名。
+
+payload:
+  - '+.claude.ai'
+  - '+.claude.com'
+  - '+.anthropic.com'

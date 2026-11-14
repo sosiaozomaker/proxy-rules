@@ -1,0 +1,26 @@
+# 仅供本地用官方 Mihomo 做配置语法测试，不是可部署配置。
+# 不含真实节点或公网服务器地址；测试过程不登录 Claude、不发送消息。
+
+mixed-port: 17890
+bind-address: 127.0.0.1
+external-controller: 127.0.0.1:19090
+ipv6: false
+dns:
+  enable: false
+
+rule-providers:
+  claude:
+    type: file
+    behavior: domain
+    format: yaml
+    path: ./rules/claude.yaml
+
+proxy-groups:
+  - name: Claude-LisaHost
+    type: select
+    proxies:
+      - DIRECT
+
+rules:
+  - RULE-SET,claude,Claude-LisaHost
+  - MATCH,DIRECT
